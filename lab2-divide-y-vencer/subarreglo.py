@@ -78,14 +78,31 @@ def subarreglo_maximo(
     valores: list[float], inicio: int, fin: int
 ) -> tuple[int, int, float]:
     """Encuentra la mejor racha por divide y venceras.
- 
+
     Args:
         valores: variacion diaria de caja.
         inicio: indice inicial del rango a considerar (inclusive).
         fin: indice final del rango a considerar (inclusive).
- 
+
     Returns:
         Una tupla (inicio, fin, suma) del mejor tramo dentro de
         valores[inicio..fin].
     """
-    # TODO: caso base, dos llamadas recursivas, caso cruzado y combinar.
+    if inicio == fin:
+        return inicio, fin, valores[inicio]
+
+    medio = (inicio + fin) // 2
+
+    izquierda = subarreglo_maximo(valores, inicio, medio)
+    derecha = subarreglo_maximo(valores, medio + 1, fin)
+    cruzada = suma_cruzada(valores, inicio, medio, fin)
+
+    mejor = izquierda
+
+    if derecha[2] > mejor[2]:
+        mejor = derecha
+
+    if cruzada[2] > mejor[2]:
+        mejor = cruzada
+
+    return mejor
