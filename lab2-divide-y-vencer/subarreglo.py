@@ -34,18 +34,44 @@ def suma_cruzada(
     valores: list[float], inicio: int, medio: int, fin: int
 ) -> tuple[int, int, float]:
     """Encuentra el mejor tramo que cruza el punto medio.
- 
+
     Args:
         valores: variacion diaria de caja.
         inicio: indice inicial del rango considerado (inclusive).
         medio: indice del ultimo elemento de la mitad izquierda.
         fin: indice final del rango considerado (inclusive).
- 
+
     Returns:
         Una tupla (inicio, fin, suma) del mejor tramo que incluye al
         menos un elemento de cada mitad.
     """
-    # TODO: barrido lineal desde el punto medio hacia cada lado.
+    suma = 0
+    mejor_suma_izquierda = float("-inf")
+    mejor_inicio = medio
+
+    for i in range(medio, inicio - 1, -1):
+        suma += valores[i]
+
+        if suma > mejor_suma_izquierda:
+            mejor_suma_izquierda = suma
+            mejor_inicio = i
+
+    suma = 0
+    mejor_suma_derecha = float("-inf")
+    mejor_fin = medio + 1
+
+    for i in range(medio + 1, fin + 1):
+        suma += valores[i]
+
+        if suma > mejor_suma_derecha:
+            mejor_suma_derecha = suma
+            mejor_fin = i
+
+    return (
+        mejor_inicio,
+        mejor_fin,
+        mejor_suma_izquierda + mejor_suma_derecha,
+    )
  
  
 def subarreglo_maximo(
