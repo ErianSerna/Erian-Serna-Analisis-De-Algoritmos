@@ -58,7 +58,7 @@
 - Recomienda una sola implementación de merge sort y declara que la extrapolación es una estimación.
 
 **Lo que puede mejorar:**
-- Los datos citados no coinciden con la gráfica: dice que insertion sort tarda 1,27 s con 6.400 registros en el escenario C, pero la gráfica publicada muestra cerca de 0,95 s. La estimación de 12,4 horas se apoya en ese dato.
+- Los datos citados no coinciden del todo con la gráfica: dice que insertion sort tarda 1,27 s con 6.400 registros en el escenario C, pero la gráfica publicada de la Parte 3 muestra cerca de 1,36 s. La estimación de 12,4 horas se apoya en el dato del texto, así que conviene recalcularla con el valor de la gráfica.
 - La estimación para merge sort se da sin mostrar el cálculo.
 - No describe qué se ve con tamaños pequeños, y la consideración distinta del tiempo no menciona memoria extra ni estabilidad.
 - Los ejes no indican la unidad del tamaño (registros).
